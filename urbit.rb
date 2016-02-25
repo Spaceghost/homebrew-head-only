@@ -13,6 +13,8 @@ class Urbit < Formula
   depends_on "cmake" => :build
 
   def install
+    system "mkdir urb"
+    system "curl -o urb/urbit.pill http://bootstrap.urbit.org/latest.pill"
     system "make", "BIN=#{bin}", "LIB=#{share}"
     share.install "urb/urbit.pill"
     share.install Dir["urb/zod/*"]
